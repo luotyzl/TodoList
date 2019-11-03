@@ -13,14 +13,18 @@ You may need:
 3. [NodeJs](https://nodejs.org/en/) (Latest LTS)
 
 ## Introduction
-    The frontend is inside directory `ClientApp`
+
+
+The frontend is inside directory `ClientApp`
+
 ## Installation
 
 1. Clone the repo:
     `git clone https://github.com/luotyzl/TodoList.git`
 2. open project with VS and modify the database connection string in the `appsettings.json` file
-    ```bash
-  "ConnectionString": {
+
+    ```
+"ConnectionString": {
     "TodoListDb": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TodoList;Integrated Security=True"
   },
     ```
@@ -28,4 +32,5 @@ You may need:
     `PM> update-database`
 
 ## Debug
-    Press Ctrl + F5 in VS
+
+Press Ctrl + F5 in VS
