@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-6">
+      <h1 id="tableLabel">Todo List</h1>
+  </div>
+  <div class="col-6 text-right">
+      <button  class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add New Item</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addNewForm">
+      <div class="form-group">
+        <label for="itemname">Name</label>
+        <div class="input-group">
+          <input id="itemname" 
+          type="text" 
+          formControlName="name" 
+          class="form-control">
+        </div>
+        <label for="itemDescription">Description</label>
+        <div class="input-group">
+          <textarea  id="itemDescription" 
+          type="text" 
+          formControlName="description" 
+          class="form-control"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="submitForm(addNewForm)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #detailModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="form-group">
+        <label>Name</label>
+        <p class="ml-4">
+          {{currentTask.name}}
+        </p>
+        <label>Created Time</label>
+        <p class="ml-4">
+          {{currentTask.createdAt | date:'yyyy-MM-dd hh:mm a'}}
+        </p>
+        <label>Completed Time</label>
+        <p class="ml-4">
+          {{currentTask.completeAt | date:'yyyy-MM-dd hh:mm a'}}
+        </p>
+        <label>Status</label>
+        <p class="ml-4">
+            {{ currentTask.isComplete ? "Complete" : "Unfinished" }}
+        </p>
+        <label>Description</label>
+        <p class="ml-4">
+          {{currentTask.description}}
+        </p>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.dismiss()">Close</button>
+  </div>
+</ng-template>
+
+
+<hr>
+
+<p *ngIf="!tasks"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="tasks">
+  <thead>
+    <tr>
+      <th [ngStyle]="{width:'20%'}">Name</th>
+      <th [ngStyle]="{width:'25%'}">Created Time</th>
+      <th [ngStyle]="{width:'25%'}">Completed Time</th>
+      <th [ngStyle]="{width:'10%'}">Status</th>
+      <th [ngStyle]="{width:'20%'}">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.name }}</td>
+      <td>{{ task.createdAt | date:'yyyy-MM-dd hh:mm a'}}</td>
+      <td>{{ task.completeAt | date:'yyyy-MM-dd hh:mm a'}}</td>
+      <td>{{ task.isComplete ? "Complete" : "Unfinished" }}</td>
+      <td>
+        <button type="button" 
+        class="btn btn-primary" 
+        (click)="openDetail(detailModal,task)">Detail</button>
+        <button type="button" 
+        class="ml-1 btn btn-success" 
+        (click)="onCompleteClick(task)"
+        *ngIf="!task.isComplete" >Complete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
