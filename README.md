@@ -15,7 +15,7 @@ You may need:
 ## Introduction
 
 
-The frontend is inside directory `ClientApp`
+The frontend is inside directory `TodoList/ClientApp`
 
 ## Installation
 
