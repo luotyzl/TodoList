@@ -20,16 +20,15 @@ The frontend is inside directory `ClientApp`
 ## Installation
 
 1. Clone the repo:
-    `git clone https://github.com/luotyzl/TodoList.git`
-2. open project with VS and modify the database connection string in the `appsettings.json` file
+`git clone https://github.com/luotyzl/TodoList.git`
 
-    ```
-"ConnectionString": {
-    "TodoListDb": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TodoList;Integrated Security=True"
-  },
-    ```
+2. open project with VS and modify the database connection string in the `appsettings.json` file:
+
+`"ConnectionString": {"TodoListDb": "Data Source=localdb)\\MSSQLLocalDB;Initial Catalog=TodoList;Integrated Security=True" }`
+
 3. Run the following command in the Package Manager console:
-    `PM> update-database`
+
+`PM> update-database`
 
 ## Debug
 
